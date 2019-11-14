@@ -1,0 +1,6 @@
+{
+    "/eps-app/rest/*": {
+        "target": "http://159.89.229.217:8084",
+        "secure": false
+    }
+}

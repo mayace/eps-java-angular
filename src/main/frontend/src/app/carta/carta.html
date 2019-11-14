@@ -1,0 +1,50 @@
+<div class="columns">
+    <div class="column">
+        <div class="field">
+            <label class="label">Buscar:</label>
+            <div class="control">
+                <input [(ngModel)]="selected.destinatario" type="text" class="input" autofocus>
+            </div>
+        </div>
+    </div>
+    <div class="column is-3">
+        <a [routerLink]="['/cartas', 0]" class="button is-primary is-fullwidth">
+            <span class="icon">
+                <i class="fas fa-plus"></i>
+            </span>
+            <span>
+                Nuevo
+            </span>
+        </a>
+    </div>
+</div>
+
+<table class="table is-fullwidth is-striped">
+    <caption>
+        {{list.length}} grupo(s)
+    </caption>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of list">
+            <td>
+                <div *ngIf="es_selector;else btnLink" class="control">
+                    <label class="radio">
+                        <input (ngModelChange)="watch_selected($event)" [(ngModel)]="selected" [value]="item"
+                            type="radio">
+                        {{item.destinatario}}
+                    </label>
+                </div>
+                <ng-template #btnLink>
+                    <a [routerLink]="['/cartas', item.idCarta]" class="button is-large is-text">
+                        {{item.destinatario}}
+                    </a>
+                </ng-template>
+            </td>
+        </tr>
+    </tbody>
+</table>
+

@@ -1,0 +1,44 @@
+<div class="select is-fullwidth">
+    <select [(ngModel)]="selected">
+        <option *ngFor="let item of list;" [ngValue]="item">{{item.nombre}}</option>
+    </select>
+</div>
+
+<!-- <table class="table is-fullwidth is-striped">
+    <tbody>
+        <tr *ngFor="let item of []; let index = index;">
+            <td>
+                {{index + 1}}.
+                {{item.fkCarrera.nombre}}
+            </td>
+            <td *ngIf="!read_only" style="width: 15%;">
+                <button (click)="selected.estudianteCarreraList.splice(index,1)" class="is-danger button is-fullwidth">
+                    <span class="icon">
+                        <i class="fas fa-times"></i>
+                    </span>
+                </button>
+            </td>
+        </tr>
+        <tr *ngIf="!read_only">
+            <td>
+                <div class="control">
+                    <div class="select is-fullwidth">
+                        <select [(ngModel)]="carrera_selected">
+                            <option *ngFor="let item of list" [ngValue]="item">
+                                {{item.nombre}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <button type="button" [disabled]="!carrera_selected" (click)="add_carrera(carrera_selected)"
+                    class="button is-primary is-fullwidth">
+                    <span class="icon">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table> -->

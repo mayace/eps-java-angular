@@ -1,0 +1,35 @@
+<div class="field">
+    <div class="control has-text-right">
+        <a [routerLink]="['/carreras']" class="button">
+            <span class="icon">
+                <i class="fas fa-times"></i>
+            </span>
+            <span>Cerrar</span>
+        </a>
+    </div>
+</div>
+
+<div class="field">
+    <label for="" class="label">Código carrera</label>
+    <div class="control">
+        <input [disabled]="hay_contenido" type="number" [(ngModel)]="selected.codigoCarrera" class="input">
+    </div>
+</div>
+
+<div class="field">
+    <label for="" class="label">Nombre</label>
+    <div class="control">
+        <input type="text" [(ngModel)]="selected.nombre" class="input">
+    </div>
+</div>
+
+
+<div *ngIf="hay_contenido" class="buttons is-right">
+    <button (click)="dodel()" class="button is-danger">Eliminar</button>
+    <button (click)="docancel()" class="button">Cancelar</button>
+    <button [disabled]="!upt_ready" (click)="doupt()" class="button is-success">Guardar</button>
+</div>
+
+<div *ngIf="!hay_contenido" class="buttons is-right">
+    <button [disabled]="!upt_ready" (click)="docreate()" class="button is-primary">Crear</button>
+</div>

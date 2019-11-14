@@ -1,0 +1,34 @@
+<table class="table is-striped is-fullwidth">
+    <caption>
+        Incorporaciones activas: <strong>{{incorporacion_list.length}}</strong>
+    </caption>
+    <thead>
+        <th>Correlativo</th>
+        <th>Estudiante</th>
+        <th>Carrera</th>
+        <th>Institución</th>
+        <th>Fecha finalización</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of incorporacion_list">
+            <td>
+                <a [routerLink]="['/estudiante', item.fkEstudianteCarnet.carnet, 'incorporaciones',item.idIncorporacion]"
+                    routerLinkActive="router-link-active" class="button is-text">
+                    {{item.correlativoDoc}}
+                </a>
+            </td>
+            <td>{{item.fkEstudianteCarnet.carnet}}</td>
+            <td>
+                {{
+                item.fkEstudianteCarnet.estudianteCarreraList 
+                && item.fkEstudianteCarnet.estudianteCarreraList[0]
+                && item.fkEstudianteCarnet.estudianteCarreraList[0].fkCarrera
+                && item.fkEstudianteCarnet.estudianteCarreraList[0].fkCarrera.nombre
+                    || ""
+            }}
+            </td>
+            <td>{{item.fkInstitucion.nombre}}</td>
+            <td>{{item.fechaFinal}}</td>
+        </tr>
+    </tbody>
+</table>

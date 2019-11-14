@@ -1,0 +1,57 @@
+<table class="table is-fullwidth is-striped">
+    <caption>
+        {{list.length}} incorporacion(es)
+    </caption>
+    <thead>
+        <tr>
+            <th>Correlativo</th>
+            <th>Fecha inicio</th>
+            <th>Fecha final</th>
+            <th>Duración</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of list">
+            <td>
+                <a [routerLink]="['./',item.idIncorporacion]" class="button is-text">
+                    {{item.correlativoDoc}}
+                </a>
+            </td>
+            <td>{{item.fechaInicio}}</td>
+            <td>{{item.fechaFinal}}</td>
+            <td>{{item.tiempoEps}}</td>
+            <!-- <td>
+                <div class="buttons">
+                    <a target="__blank" href="../../../assets/cartas/Privado.docx" class="button is-primary">
+                        <span class="icon">
+                            <i class="fas fa-download"></i>
+                        </span>
+                        <span>Privado</span>
+                    </a>
+                    <a target="__blank" href="../../../assets/cartas/Protocolo.docx" class="button is-info">
+                        <span class="icon">
+                            <i class="fas fa-download"></i>
+                        </span>
+                        <span>Anteproyecto</span>
+                    </a>
+                    <a target="__blank" href="../../../assets/cartas/Practicas.docx" class="button is-link">
+                        <span class="icon">
+                            <i class="fas fa-download"></i>
+                        </span>
+                        <span>Prácticas supervisada</span>
+                    </a>
+                </div>
+            </td> -->
+        </tr>
+    </tbody>
+
+</table>
+
+<div class="buttons is-large">
+    <a [routerLink]="['./',0]" routerLinkActive="router-link-active" class="button is-primary">
+        <span class="icon">
+            <i class="fas fa-plus"></i>
+        </span>
+        <span>Crear</span>
+    </a>
+</div>

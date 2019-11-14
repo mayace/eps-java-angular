@@ -1,0 +1,94 @@
+<div class="field">
+    <div class="control has-text-right">
+        <a [routerLink]="['/cartas']" class="button">
+            <span class="icon">
+                <i class="fas fa-times"></i>
+            </span>
+            <span>Cerrar</span>
+        </a>
+    </div>
+</div>
+
+<div class="columns">
+    <div class="column">
+        <div class="field">
+            <label for="" class="label">Nombre</label>
+            <div class="control">
+                <input type="text" [(ngModel)]="selected.destinatario" class="input">
+            </div>
+        </div>
+    </div>
+    <div class="column is-3">
+        <div *ngIf="hay_contenido;else btnCrear" class="field has-addons">
+            <div class="control">
+                <button (click)="dodel()" class="button is-danger">
+                    <span class="icon">
+                        <i class="fas fa-trash"></i>
+                    </span>
+                </button>
+            </div>
+            <div class="control">&nbsp;</div>
+            <div class="control is-expanded">
+                <button (click)="doupt()" class="button is-success is-fullwidth">
+                    <span class="icon">
+                        <i class="fas fa-save"></i>
+                    </span>
+                    <span>
+                        Guardar
+                    </span>
+                </button>
+            </div>
+        </div>
+        <ng-template #btnCrear>
+            <button [disabled]="!upt_ready" (click)="docreate()" type="button" class="button is-primary is-fullwidth">
+                <span class="icon">
+                    <i class="fas fa-plus"></i>
+                </span>
+                <span>
+                    Crear
+                </span>
+            </button>
+        </ng-template>
+    </div>
+</div>
+
+<table class="table is-fullwidth is-striped">
+    <caption>
+        {{selected.detalleCartaList.length}} detalle(s)
+    </caption>
+    <thead>
+        <tr>
+            <th>Cargo</th>
+            <th>Dirigido a</th>
+            <th style="width: 15%;"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of selected.detalleCartaList; let index = index;">
+            <td>
+                <input type="text" [(ngModel)]="item.cargo" class="input">
+            </td>
+            <td>
+                <input type="text" [(ngModel)]="item.dirigidoA" class="input">
+            </td>
+            <td>
+                <a (click)="selected.detalleCartaList.splice(index,1)" class="button is-danger is-width is-fullwidth">
+                    <span class="icon">
+                        <i class="fas fa-times"></i>
+                    </span>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a (click)="doadd_detalle()" class="button is-primary">
+                    <span class="icon">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                </a>
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>

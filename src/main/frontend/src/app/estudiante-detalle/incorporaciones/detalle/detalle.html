@@ -1,0 +1,222 @@
+<a class="button is-dark is-pulled-right" [routerLink]="['../']">
+    <span class="icon">
+        <span class="delete"></span>
+    </span>
+</a>
+<br>
+<div class="field">
+    <label for="" class="label">Correlativo</label>
+    <div class="control">
+        <input [readonly]="read_only" [(ngModel)]="selected.correlativoDoc" type="text" class="input">
+    </div>
+</div>
+<div class="field">
+    <label class="label">Semestre</label>
+    <div class="control">
+        <label class="radio">
+            <input [disabled]="read_only" type="radio" [(ngModel)]="selected.semestre" value="1">
+            Primero
+        </label>
+        <label class="radio">
+            <input [disabled]="read_only" type="radio" [(ngModel)]="selected.semestre" value="2">
+            Segundo
+        </label>
+    </div>
+</div>
+
+<div class="columns">
+    <div class="column">
+        <div class="field">
+            <label for="" class="label">Fecha inicio</label>
+            <div class="control">
+                <input placeholder="yyyy-mm-dd" (click)="d.toggle()" ngbDatepicker #d="ngbDatepicker"
+                    [disabled]="read_only" [(ngModel)]="selected.fechaInicio" type="text" class="input">
+            </div>
+        </div>
+    </div>
+    <div class="column">
+
+        <div class="field">
+            <label for="" class="label">Fecha finalización</label>
+            <div class="control">
+                <input placeholder="yyyy-mm-dd" (click)="dd.toggle()" ngbDatepicker #dd="ngbDatepicker"
+                    [disabled]="read_only" [(ngModel)]="selected.fechaFinal" type="text" class="input">
+            </div>
+        </div>
+    </div>
+    <div class="column">
+        <div class="field">
+            <label for="" class="label">Duración (meses)</label>
+            <div class="control">
+                <input readonly type="text" class="input" value="{{duracion_eps}}">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="columns">
+    <div class="column">
+        <div class="field">
+            <label for="" class="label">Fecha inicio (seguro de vida)</label>
+            <div class="control">
+                <input placeholder="yyyy-mm-dd" (click)="d1.toggle()" ngbDatepicker #d1="ngbDatepicker"
+                    [disabled]="read_only" [(ngModel)]="selected.fechaInicioSeguro" type="text" class="input">
+            </div>
+        </div>
+
+    </div>
+    <div class="column">
+        <div class="field">
+            <label for="" class="label">Fecha finalización (seguro de vida)</label>
+            <div class="control">
+                <input placeholder="yyyy-mm-dd" (click)="dd2.toggle()" ngbDatepicker #dd2="ngbDatepicker"
+                    [disabled]="read_only" [(ngModel)]="selected.fechaFinalSeguro" type="text" class="input">
+            </div>
+        </div>
+    </div>
+    <div class="column">
+        <div class="field">
+            <label for="" class="label">Duración (meses)</label>
+            <div class="control">
+                <input readonly type="text" class="input" [value]="duracion_eps_seguro">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="field">
+    <label for="" class="label">
+        Institución
+    </label>
+    <div class="control">
+        <div class="select is-fullwidth">
+            <select [disabled]="read_only" [(ngModel)]="selected.fkInstitucion">
+                <option *ngFor="let item of list_institucion;" [ngValue]="item">{{item.nombre}}</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="field">
+    <label class="label">Cartas</label>
+    <div *ngIf="!read_only" class="control">
+        <a (click)="modal_carta_visible = true;" class="button is-primary">
+            <span class="icon">
+                <i class="fas fa-plus"></i>
+            </span>
+        </a>
+    </div>
+    <div *ngIf="selected.fkCarta" class="control">
+        <table class="table is-striped is-fullwidth">
+            <caption>
+                {{selected.fkCarta.destinatario}}
+            </caption>
+
+            <tbody>
+                <tr *ngFor="let item of selected.fkCarta.detalleCartaList">
+                    <td>
+                        {{item.dirigidoA}}
+                    </td>
+                    <td>
+                        <div class="buttons">
+                            <a (click)="dodownload(item,'privado')" class="button is-primary">
+                                <span class="icon">
+                                    <i class="fas fa-download"></i>
+                                </span>
+                                <span>Privado</span>
+                            </a>
+                            <a (click)="dodownload(item,'practica')" class="button is-info">
+                                <span class="icon">
+                                    <i class="fas fa-download"></i>
+                                </span>
+                                <span>Práctica supervisada</span>
+                            </a>
+                            <a (click)="dodownload(item,'protocolo')" class="button is-link">
+                                <span class="icon">
+                                    <i class="fas fa-download"></i>
+                                </span>
+                                <span>Anteproyecto</span>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div [ngClass]="{'is-active': modal_carta_visible }" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div class="box">
+            <carta (selected)="selected.fkCarta = $event; modal_carta_visible = false;" es-selector="true"></carta>
+        </div>
+    </div>
+    <button (click)="modal_carta_visible = false;" class="modal-close is-large" aria-label="close"></button>
+</div>
+
+
+<div class="field">
+    <label for="" class="label">Asesor</label>
+    <div class="control">
+        <input [readonly]="read_only" [(ngModel)]="selected.asesor" type="text" class="input">
+    </div>
+</div>
+
+
+<div class="field">
+    <label for="" class="label">Asesor supervisor</label>
+    <div class="control">
+        <input [readonly]="read_only" [(ngModel)]="selected.asesorSupervisor" type="text" class="input">
+    </div>
+</div>
+<div class="field">
+    <label for="" class="label">Supervisor</label>
+    <div class="control">
+        <input [readonly]="read_only" [(ngModel)]="selected.supervisor" type="text" class="input">
+    </div>
+</div>
+
+
+<div *ngIf="hay_contenido" class="columns">
+    <div class="column is-4">
+        <button (click)="dodel()" *ngIf="read_only" class="button is-danger is-fullwidth">
+            <span class="icon">
+                <i class="fas fa-trash"></i>
+            </span>
+            <span>Eliminar</span>
+        </button>
+    </div>
+    <div class="column is-4">
+        <button (click)="docancel()" *ngIf="!read_only" class="button is-fullwidth">
+            <span class="icon">
+                <i class="fas fa-ban"></i>
+            </span>
+            <span>Cancelar</span>
+        </button>
+    </div>
+    <div class="column is-4">
+        <button (click)="read_only = false" *ngIf="read_only" class="button is-info is-fullwidth">
+            <span class="icon">
+                <i class="fas fa-edit"></i>
+            </span>
+            <span>Editar</span>
+        </button>
+
+        <button (click)="doupt()" *ngIf="!read_only" [disabled]="!upt_ready" class="button is-success is-fullwidth">
+            <span class="icon">
+                <i class="fas fa-save"></i>
+            </span>
+            <span>Guardar</span>
+        </button>
+    </div>
+</div>
+
+<div class="has-text-right">
+    <button (click)="docreate()" [disabled]="!upt_ready" *ngIf="!hay_contenido" class="button is-primary">
+        <span class="icon">
+            <i class="fas fa-plus"></i>
+        </span>
+        <span>Crear</span>
+    </button>
+
+</div>

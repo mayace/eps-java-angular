@@ -1,0 +1,97 @@
+<div class="control has-text-right">
+    <a [routerLink]="['/institucion']" class="button">
+        <span class="icon">
+            <i class="fas fa-times"></i>
+        </span>
+        <span>Cerrar</span>
+    </a>
+</div>
+
+<div class="columns" style="align-items: flex-end;">
+    <div class="column">
+        <div class="field">
+            <label class="label">Nombre:</label>
+            <div class="control">
+                <input [readonly]="read_only" type="text" class="input" [(ngModel)]="selected.nombre">
+            </div>
+        </div>
+    </div>
+    <div class="column is-3">
+        <div *ngIf="hay_contenido" class="columns">
+            <div class="column is-4">
+                <button *ngIf="!read_only" (click)="docancel()" class="button is-fullwidth">
+                    <span class="icon">
+                        <i class="fas fa-ban"></i>
+                    </span>
+                </button>
+                <button *ngIf="read_only" (click)="dodel()" class="button is-danger is-fullwidth">
+                    <span class="icon">
+                        <i class="fas fa-trash"></i>
+                    </span>
+                </button>
+            </div>
+            <div class="column">
+                <button *ngIf="read_only" (click)="read_only = false" class="button is-info is-fullwidth">
+                    <span class="icon">
+                        <i class="fas fa-edit"></i>
+                    </span>
+                    <span>Editar</span>
+                </button>
+
+                <button *ngIf="!read_only" (click)="doupt()" [disabled]="!upt_ready"
+                    class="button is-success is-fullwidth">
+                    <span class="icon">
+                        <i class="fas fa-save"></i>
+                    </span>
+                    <span>Guardar</span>
+                </button>
+            </div>
+        </div>
+        <button *ngIf="!hay_contenido" (click)="docreate()" [disabled]="!upt_ready"
+            class="button is-primary is-fullwidth">
+            <span class="icon">
+                <i class="fas fa-plus"></i>
+            </span>
+            <span>Crear</span>
+        </button>
+    </div>
+</div>
+
+<table class="table is-striped is-fullwidth">
+    <caption>
+        {{list.length}} detalle(s)
+    </caption>
+    <thead>
+        <tr>
+            <th style="width: 25%;;">Teléfono</th>
+            <th>Ubicación</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of list; let index = index;">
+            <td>
+                <div class="control">
+                    <input [readonly]="read_only" type="number" min="0" class="input" [(ngModel)]="item.telefono">
+                </div>
+            </td>
+            <td>
+                <div class="control">
+                    <input [readonly]="read_only" type="text" class="input" [(ngModel)]="item.ubicacion">
+                </div>
+            </td>
+            <td *ngIf="!read_only">
+                <button (click)="list.splice(index,1)" class="is-danger button is-fullwidth">
+                    <span class="icon">
+                        <i class="fas fa-times"></i>
+                    </span>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<button *ngIf="!read_only" (click)="doadd()" class="is-primary button">
+    <span class="icon">
+        <i class="fas fa-plus"></i>
+    </span>
+</button>
