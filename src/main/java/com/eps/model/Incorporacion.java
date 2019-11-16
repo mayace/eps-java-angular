@@ -56,6 +56,9 @@ public class Incorporacion implements Serializable {
     @Column(name = "SUPERVISOR")
     private String supervisor;
     
+    @Size(max = 1)
+    private String checked;
+    
     @Size(max = 50)
     @Column(name = "ASESOR_SUPERVISOR")
     private String asesorSupervisor;
@@ -222,4 +225,17 @@ public class Incorporacion implements Serializable {
     public void setFkInstitucion(Institucion fkInstitucion) {
         this.fkInstitucion = fkInstitucion;
     }
+
+    public Boolean getChecked() {
+        return checked.equals("1");
+    }
+
+    public void setChecked(Boolean checked) {
+        if(checked) 
+            this.checked = "1";
+        else
+            this.checked = "0";
+    }
+    
+    
 }
