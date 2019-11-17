@@ -1,3 +1,9 @@
+export class Usuario{
+    idUsuario  = 0
+    nick = ""
+    pass = ""
+}
+
 export class Incorporacion {
 
     public idIncorporacion = 0
