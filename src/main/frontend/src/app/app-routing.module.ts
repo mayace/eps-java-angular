@@ -12,40 +12,54 @@ import { CarreraDetalleComponent } from './carrera-detalle/carrera-detalle.compo
 import EstudianteIncorporacionDetalleComponent from './estudiante-detalle/incorporaciones/detalle/detalle';
 import { CartaComponent } from './carta/carta';
 import { CartaDetalleComponent } from './carta-detalle/carta-detalle';
+import { AuthRouteGuard } from './auth-route.guard';
+import { LoginComponent } from './usuario/login.component';
 
 const routes: Routes = [
   {
     path: "institucion"
     , component: InstitucionComponent
+    , canActivate: [AuthRouteGuard]
   }
   , {
     path: "institucion/:idInstitucion"
     , component: InstitucionDetalleComponent
+    , canActivate: [AuthRouteGuard]
+  }
+  , {
+    path: "login"
+    , component: LoginComponent
   }
   , {
     path: "cartas"
     , component: CartaComponent
+    , canActivate: [AuthRouteGuard]
   }
   , {
     path: "cartas/:idCarta"
     , component: CartaDetalleComponent
+    , canActivate: [AuthRouteGuard]
   }
   , {
     path: ""
     , pathMatch: "full"
     , redirectTo: "panel"
+    , canActivate: [AuthRouteGuard]
   }
   , {
     path: "panel"
     , component: PanelInicioComponent
+    , canActivate: [AuthRouteGuard]
   }
   , {
     path: "estudiante"
     , component: EstudianteComponent
+    , canActivate: [AuthRouteGuard]
   }
   , {
     path: "estudiante/:carnet"
     , component: EstudianteDetalleComponent
+    , canActivate: [AuthRouteGuard]
     , children: [
       {
         path: ""
@@ -69,10 +83,12 @@ const routes: Routes = [
   , {
     path: "carreras"
     , component: CarreraComponent
+    , canActivate: [AuthRouteGuard]
   }
   , {
     path: "carreras/:id"
     , component: CarreraDetalleComponent
+    , canActivate: [AuthRouteGuard]
   }
 ];
 

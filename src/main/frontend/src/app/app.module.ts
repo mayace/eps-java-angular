@@ -21,6 +21,8 @@ import { SimpleMenuComponent } from './menu/simple';
 import { InstitucionListComponent } from './institucion/InstitucionList';
 import { CartaComponent } from './carta/carta';
 import { CartaDetalleComponent } from './carta-detalle/carta-detalle';
+import { AuthRouteGuard } from './auth-route.guard';
+import { LoginComponent } from './usuario/login.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { CartaDetalleComponent } from './carta-detalle/carta-detalle';
     , InstitucionListComponent
     , CartaComponent
     , CartaDetalleComponent
+    , LoginComponent
   ],
   imports: [
     BrowserModule
@@ -51,6 +54,7 @@ import { CartaDetalleComponent } from './carta-detalle/carta-detalle';
     {
       provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true
     }
+    , AuthRouteGuard
   ],
   bootstrap: [AppComponent]
 })
