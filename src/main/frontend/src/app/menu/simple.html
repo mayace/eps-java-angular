@@ -22,4 +22,15 @@
             Cartas
         </a>
     </p>
+
+    <p *ngIf="exist_user" class="level-item has-text-centered">
+        <a (click)="dologout()" class="button is-danger">
+            <span class="icon">
+                <i class="fas fa-sign-out-alt"></i>
+            </span>
+            <span>
+                Salir
+            </span>
+        </a>
+    </p>
 </nav>
