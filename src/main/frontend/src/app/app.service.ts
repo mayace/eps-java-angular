@@ -11,7 +11,7 @@ export class AppService<T> {
   name = "name"
 
   constructor(
-    private http: HttpClient
+    public http: HttpClient
   ) { }
 
   controller_url(id : any = "") {
