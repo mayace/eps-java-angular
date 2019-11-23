@@ -1,0 +1,52 @@
+<article class="panel is-primary">
+    <div class="panel-heading">
+        Menu
+    </div>
+    <div class="panel-block">
+        <span class="is-uppercase has-text-weight-bold">
+            <span class="icon">
+                <i class="fas fa-user"></i>
+            </span>
+            username
+        </span>
+        <a (click)="dologout()" class="has-text-danger" style="margin-left: auto;">
+            <span class="icon">
+                <i class="fas fa-sign-out-alt"></i>
+            </span>
+            <span>
+                Salir
+            </span>
+        </a>
+
+    </div>
+    <a [routerLink]="['/panel']" routerLinkActive="is-active" class="panel-block">
+        <span class="panel-icon">
+            <i class="fas fa-home" aria-hidden="true"></i>
+        </span>
+        <span>Inicio</span>
+    </a>
+    <a [routerLink]="['/estudiante']" routerLinkActive="is-active" class="panel-block">
+        <span class="panel-icon">
+            <i class="fas fa-users" aria-hidden="true"></i>
+        </span>
+        Estudiantes
+    </a>
+    <a [routerLink]="['/institucion']" routerLinkActive="is-active" class="panel-block">
+        <span class="panel-icon">
+            <i class="fas fa-university" aria-hidden="true"></i>
+        </span>
+        Instituciones
+    </a>
+    <a [routerLink]="['/carreras']" routerLinkActive="is-active" class="panel-block">
+        <span class="panel-icon">
+            <i class="fas fa-scroll" aria-hidden="true"></i>
+        </span>
+        Carreras
+    </a>
+    <a [routerLink]="['/cartas']" routerLinkActive="is-active" class="panel-block">
+        <span class="panel-icon">
+            <i class="fas fa-address-book" aria-hidden="true"></i>
+        </span>
+        Cartas
+    </a>
+</article>

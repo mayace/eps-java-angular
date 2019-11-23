@@ -23,6 +23,7 @@ import { CartaComponent } from './carta/carta';
 import { CartaDetalleComponent } from './carta-detalle/carta-detalle';
 import { AuthRouteGuard } from './auth-route.guard';
 import { LoginComponent } from './usuario/login.component';
+import { VerticalMenuComponent } from './menu/vertical';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { LoginComponent } from './usuario/login.component';
     , CartaComponent
     , CartaDetalleComponent
     , LoginComponent
+    , VerticalMenuComponent
   ],
   imports: [
     BrowserModule
