@@ -1,18 +1,44 @@
-<div class="columns is-centered">
+<!-- https://codepen.io/Lewitje/pen/BNNJjo -->
+<div class="wrapper">
+    <div class="container">
+        <h1>Inicia sesión</h1>
+
+        <div class="form">
+            <input [(ngModel)]="selected.nick" type="text" placeholder="Usuario">
+            <input [(ngModel)]="selected.pass" type="password" placeholder="Contraseña">
+            <button [disabled]="!upt_ready" type="button" (click)="dologin()" id="login-button">Ingresar</button>
+        </div>
+    </div>
+
+    <!-- <ul class="bg-bubbles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul> -->
+</div>
+<div class="columns is-centered is-hidden">
     <div class="column is-6">
-        <div class="field">
+
+        <div class="field is-hidden">
             <label for="" class="label">Usuario</label>
             <div class="control">
                 <input [(ngModel)]="selected.nick" type="text" name="" id="" class="input is-large" autofocus>
             </div>
         </div>
 
-        <div class="field">
+        <div class="field is-hidden">
             <label for="" class="label">Contraseña</label>
             <input [(ngModel)]="selected.pass" type="password" class="input is-large" id="">
         </div>
 
-        <div class="buttons" style="justify-content: flex-end;">
+        <div class="buttons is-hidden" style="justify-content: flex-end;">
             <button [disabled]="!upt_ready" type="button" (click)="dologin()" class="button is-primary is-large">
                 Ingresar
             </button>
