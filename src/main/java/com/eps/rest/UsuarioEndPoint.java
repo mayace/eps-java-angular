@@ -27,7 +27,7 @@ import javax.ws.rs.QueryParam;
  * @author nikola
  */
 
-@Path("Usuario")
+@Path("usuario")
 @RequestScoped
 @Produces("application/json")
 @Consumes("application/json")
@@ -43,6 +43,7 @@ public class UsuarioEndPoint {
     }
     
     @GET
+    @JsonView(View.Search.class)
     @Path("/login")
     public ResponseJSON login(@QueryParam("nick") @DefaultValue("%") String nick,
             @QueryParam("pass") @DefaultValue("%") String pass){
