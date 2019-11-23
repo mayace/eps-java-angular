@@ -24,7 +24,6 @@ export class CarreraDetalleComponent implements OnInit {
                 self.doget(id);
             } else {
                 self.body.data = new Carrera();
-                self.upt_ready = false;
             }
 
         });
