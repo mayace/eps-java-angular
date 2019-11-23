@@ -5,7 +5,9 @@
  */
 package com.eps.model;
 
+import com.eps.rest.View;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonView;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,20 +38,24 @@ public class Usuario implements Serializable {
     private Long idUsuario;
     
     @Size(max = 50)
+    @JsonView(View.Search.class)
     private String nombre;
     
     @Size(max = 50)
+    @JsonView(View.Search.class)
     private String nick;
     
     @Size(max = 50)
     private String pass;
     
     @Size(max = 50)
+    @JsonView(View.Search.class)
     private String correo;
     
     @JoinColumn(name = "FK_ID_ROL", referencedColumnName = "ID_ROL")
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference(value = "rol")
+    //@JsonBackReference(value = "rol")
+    @JsonView(View.Search.class)
     private Rol fkIdRol;
 
     public Long getIdUsuario() {
