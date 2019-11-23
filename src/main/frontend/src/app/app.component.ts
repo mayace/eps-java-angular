@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MensajeService } from "./mensaje.service";
 import { BodyResponse } from './modelos';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,17 @@ import { BodyResponse } from './modelos';
 export class AppComponent {
   title = 'practicas-intermedias-eps-js';
 
-  constructor(public mensajes: MensajeService) { }
+  constructor(
+    public mensajes: MensajeService
+    , private auth: AuthService
+  ) { }
+
+
+  get user_info() {
+    return this.auth.selected;
+  }
+
+
 }
 
 export interface SimpleListAppInterface<T> {
