@@ -127,6 +127,23 @@
             <version>2.27</version>
             <type>jar</type>
         </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>0.10.7</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>0.10.7</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>0.10.7</version>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -152,7 +169,7 @@
                     
                     <webResources>
                         <resource>
-                            <directory>src\main\frontend\dist\practicas-intermedias-eps-js</directory>
+                            <directory>src\main\frontend\dist\frontend</directory>
                         </resource>
                     </webResources>
                 </configuration>
