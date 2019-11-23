@@ -23,7 +23,15 @@ export default class EstudianteDetalleDatosComponent implements OnInit {
 
     async ngOnInit() {
         const self = this;
-        self.active_route.pathFromRoot[1].params.subscribe(params => self.doget(params.carnet));
+        self.active_route.pathFromRoot[1].params.subscribe(params => {
+            const carnet = params.carnet;
+            if (carnet > 0) {
+                self.doget(carnet);
+            } else{
+                self.body.data = new Estudiante();
+                self.read_only = false;
+            }
+        });
         self.body_carrera = await self.carreras.sel();
     }
     async doget(carnet: Number) {
