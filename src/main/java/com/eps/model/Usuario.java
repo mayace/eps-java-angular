@@ -5,6 +5,7 @@
  */
 package com.eps.model;
 
+import com.eps.utils.AES;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -28,6 +29,7 @@ import javax.validation.constraints.Size;
 public class Usuario implements Serializable {
     
     private static final long serialVersionUID = 1L;
+    final String key = "|@eps14&&@eps14@|";
     
     @Id
     @GeneratedValue(generator="usuarioSeq") 
@@ -81,7 +83,8 @@ public class Usuario implements Serializable {
     }
 
     public void setPass(String pass) {
-        this.pass = pass;
+        String encryptedString = AES.encrypt(pass, key) ;
+        this.pass = encryptedString;
     }
 
     public String getCorreo() {

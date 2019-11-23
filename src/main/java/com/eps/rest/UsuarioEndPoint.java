@@ -27,7 +27,7 @@ import javax.ws.rs.QueryParam;
  * @author nikola
  */
 
-@Path("Usuario")
+@Path("usuario")
 @RequestScoped
 @Produces("application/json")
 @Consumes("application/json")

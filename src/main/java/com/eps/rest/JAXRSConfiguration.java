@@ -25,6 +25,8 @@ public class JAXRSConfiguration extends Application {
         resources.add(CartaEndPoint.class);
         resources.add(IncorporacionEndPoint.class);
         resources.add(DetalleInstitucionEndPoint.class);
-        return resources; 
+        resources.add(RolEndPoint.class);
+        resources.add(UsuarioEndPoint.class);
+        return resources;
     }
 }

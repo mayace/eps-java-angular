@@ -7,6 +7,7 @@ package com.eps.controller;
 
 import com.eps.model.ResponseJSON;
 import com.eps.model.Usuario;
+import com.eps.utils.AES;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -26,6 +27,8 @@ public class UsuarioBean {
 
     @PersistenceContext
     EntityManager em;
+    
+    final String key = "|@eps14&&@eps14@|";
     
     public ResponseJSON create(Usuario usuario){
         ResponseJSON response = new ResponseJSON();
@@ -59,7 +62,11 @@ public class UsuarioBean {
         Root<Usuario> root = query.from(Usuario.class);
         query.select(root);
         
-        Predicate general = builder.and(builder.equal(root.<String>get("pass"),password),builder.equal(root.<String>get("nick"),nick));
+        Predicate general = builder.and(builder.equal(root.<String>get("pass"),AES.encrypt(password, key)),builder.equal(root.<String>get("nick"),nick));
+        
+        query.where(
+                general
+        );
         
         TypedQuery<Usuario> finalQuery = em.createQuery(query);
         
