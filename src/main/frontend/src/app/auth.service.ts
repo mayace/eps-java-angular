@@ -53,7 +53,7 @@ export class AuthService extends AppService<any> {
         const params = {
             nick, pass
         }
-        return self.http.get<BodyResponse<Usuario>>(this.baseurl + "usuario/login", { params }).toPromise();
+        return self.http.post<BodyResponse<Usuario>>(this.baseurl + "usuario/login", params).toPromise();
     }
 
 
