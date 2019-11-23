@@ -48,7 +48,14 @@ export class InstitucionDetalleComponent implements OnInit {
   ngOnInit() {
     const self = this;
     self.route.params.subscribe(params => {
-      self.doget(params.idInstitucion)
+      const idInstitucion = params.idInstitucion;
+
+      if (idInstitucion > 0) {
+        self.doget(idInstitucion);
+      } else {
+        self.body.data = new Institucion();
+        self.read_only = false;
+      }
     });
   }
 
