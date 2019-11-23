@@ -5,7 +5,7 @@
 
         <div class="form">
             <input [(ngModel)]="selected.nick" type="text" placeholder="Usuario">
-            <input [(ngModel)]="selected.pass" type="password" placeholder="Contraseña">
+            <input (keyup.enter)="upt_ready ? dologin() : 1" [(ngModel)]="selected.pass" type="password" placeholder="Contraseña">
             <button [disabled]="!upt_ready" type="button" (click)="dologin()" id="login-button">Ingresar</button>
         </div>
     </div>
