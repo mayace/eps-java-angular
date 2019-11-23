@@ -1,6 +1,6 @@
 import { OnInit, Component } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { Usuario } from '../modelos';
+import { Usuario, RolUsuario } from '../modelos';
 
 @Component({
     selector: "login"
@@ -31,6 +31,9 @@ export class LoginComponent implements OnInit {
         } catch (e) {
             // const u = new Usuario();
             // u.idUsuario = 99;
+            // u.nick = self.selected.nick;
+            // u.fkIdRol = new RolUsuario();
+            // u.fkIdRol.idRol = 1;
             // self.auth.create_session(u);
             console.log(e);            
         }
