@@ -1,7 +1,12 @@
-export class Usuario{
-    idUsuario  = 0
+export class RolUsuario {
+    idRol = 0
+    nombre = ""
+}
+export class Usuario {
+    idUsuario = 0
     nick = ""
     pass = ""
+    fkIdRol: RolUsuario
 }
 
 export class Incorporacion {
