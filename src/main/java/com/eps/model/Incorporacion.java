@@ -100,6 +100,7 @@ public class Incorporacion implements Serializable {
     private Institucion fkInstitucion;
 
     public Incorporacion() {
+        this.checked = "1";
     }
 
     public Incorporacion(Long idIncorporacion) {

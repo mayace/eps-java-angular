@@ -42,7 +42,7 @@ public class UsuarioEndPoint {
         return response;
     }
     
-    @GET
+    @POST
     @JsonView(View.Search.class)
     @Path("/login")
     public ResponseJSON login(@QueryParam("nick") @DefaultValue("%") String nick,

@@ -61,6 +61,10 @@ public class UsuarioBean {
         
         Predicate general = builder.and(builder.equal(root.<String>get("pass"),password),builder.equal(root.<String>get("nick"),nick));
         
+        query.where(
+                general
+        );
+        
         TypedQuery<Usuario> finalQuery = em.createQuery(query);
         
         Usuario data = finalQuery.getSingleResult();
@@ -69,11 +73,12 @@ public class UsuarioBean {
         
         if(data != null){
             count = 1;
+            ResponseJSON response = new ResponseJSON(data,count,0,0);
+            return response;
+        } else {
+            ResponseJSON response = new ResponseJSON("",count,0,0);
+            return response;
         }
-        
-        //respuesta
-        ResponseJSON response = new ResponseJSON(data,count,0,0);
-        return response;
     }
     
     public ResponseJSON delete(Long id){
