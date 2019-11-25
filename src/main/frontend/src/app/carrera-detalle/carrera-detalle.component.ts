@@ -18,7 +18,15 @@ export class CarreraDetalleComponent implements OnInit {
     ) { }
     ngOnInit() {
         const self = this;
-        self.active_route.params.subscribe(params => self.doget(params.id));
+        self.active_route.params.subscribe(params => {
+            const id = params.id;
+            if (id > 0) {
+                self.doget(id);
+            } else {
+                self.body.data = new Carrera();
+            }
+
+        });
     }
 
     body = new BodyResponse<Carrera>();

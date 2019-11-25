@@ -1,17 +1,22 @@
 
 <div class="section" style="padding-top: 25px;">
     <div class="container">
-
-        <simple-menu></simple-menu>
-
         <div *ngFor="let item of mensajes.list; let index = index;" class="notification {{item.class}}">
             <span (click)="mensajes.del(index)" class="delete"></span>
             {{item.text}}
         </div>
-
-        <div class="box">
-            <router-outlet></router-outlet>
+        <div class="columns" style="align-items: stretch;">
+            <div *ngIf="user_info && user_info.idUsuario > 0 || false" class="column is-3">
+                <vertical-menu></vertical-menu>
+            </div>
+            <div class="column">
+                <div class="box" style="height: 100%;">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
         </div>
+
+        <!-- <simple-menu></simple-menu> -->
 
         <div class="modal {{ mensajes.loading ? 'is-active' : '' }}">
             <div class="modal-background"></div>
