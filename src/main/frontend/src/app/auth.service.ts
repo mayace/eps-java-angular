@@ -39,7 +39,7 @@ export class AuthService extends AppService<any> {
 
     logout() {
         window.localStorage.removeItem(this.codename);
-        window.location.reload();
+        window.location.href = "";
     }
 
     public isUserAuthenticated() {
