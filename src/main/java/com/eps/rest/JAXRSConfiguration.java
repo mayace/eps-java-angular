@@ -19,13 +19,13 @@ public class JAXRSConfiguration extends Application {
         Set<Class<?>> resources = new HashSet<>();
         
         resources.add(JacksonFeature.class);
+        resources.add(JacksonConfig.class);
         resources.add(InstitucionEndPoint.class);
         resources.add(EstudianteEndPoint.class);
         resources.add(CarreraEndPoint.class);
         resources.add(CartaEndPoint.class);
         resources.add(IncorporacionEndPoint.class);
         resources.add(DetalleInstitucionEndPoint.class);
-        resources.add(RolEndPoint.class);
         resources.add(UsuarioEndPoint.class);
         return resources;
     }

@@ -17,6 +17,7 @@ import javax.ws.rs.DELETE;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -42,7 +43,8 @@ public class UsuarioEndPoint {
         return response;
     }
     
-    @GET
+    @POST
+    @JsonView(View.Search.class)
     @Path("/login")
     public ResponseJSON login(@QueryParam("nick") @DefaultValue("%") String nick,
             @QueryParam("pass") @DefaultValue("%") String pass){
@@ -53,6 +55,13 @@ public class UsuarioEndPoint {
     @POST
     public ResponseJSON create(@Valid Usuario usuario){
         return usuarioBean.create(usuario);
+    }
+    
+    @PUT
+    @Path("/{id_usuario:[0-9][0-9]*}")
+    public ResponseJSON update(@PathParam("id_usuario") Long id, @Valid Usuario usuario){
+        ResponseJSON response = usuarioBean.update(id, usuario);
+        return response;
     }
     
     @DELETE
