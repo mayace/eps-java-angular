@@ -6,6 +6,7 @@
 package com.eps.rest;
 
 import com.eps.controller.UsuarioBean;
+import com.eps.model.LogModel;
 import com.eps.model.ResponseJSON;
 import com.eps.model.Usuario;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -46,9 +47,8 @@ public class UsuarioEndPoint {
     @POST
     @JsonView(View.Search.class)
     @Path("/login")
-    public ResponseJSON login(@QueryParam("nick") @DefaultValue("%") String nick,
-            @QueryParam("pass") @DefaultValue("%") String pass){
-        ResponseJSON response = usuarioBean.validatePassword(nick, pass);
+    public ResponseJSON login(@Valid LogModel login){
+        ResponseJSON response = usuarioBean.validatePassword(login.getNick(), login.getPass());
         return response;
     }
     

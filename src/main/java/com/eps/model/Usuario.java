@@ -36,6 +36,7 @@ public class Usuario implements Serializable {
     @GeneratedValue(generator="usuarioSeq") 
     @SequenceGenerator(name="usuarioSeq",sequenceName="USUARIO_SEQ", allocationSize=1)
     @Column(name = "ID_USUARIO")
+    @JsonView(View.Search.class)
     private Long idUsuario;
     
     @Size(max = 50)
