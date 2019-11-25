@@ -169,7 +169,7 @@
                     
                     <webResources>
                         <resource>
-                            <directory>src\main\frontend\dist\frontend</directory>
+                            <directory>src\main\frontend\dist\practicas-intermedias-eps-js</directory>
                         </resource>
                     </webResources>
                 </configuration>
