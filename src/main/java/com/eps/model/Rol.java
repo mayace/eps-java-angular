@@ -5,6 +5,8 @@
  */
 package com.eps.model;
 
+import com.eps.rest.View;
+import com.fasterxml.jackson.annotation.JsonView;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,10 +31,12 @@ public class Rol implements Serializable{
     @GeneratedValue(generator="rolSeq") 
     @SequenceGenerator(name="rolSeq",sequenceName="ROL_SEQ", allocationSize=1)
     @Column(name = "ID_ROL")
+    @JsonView(View.Search.class)
     private Long idRol;
     
     @Size(max = 50)
     @Column(name = "NOMBRE")
+    @JsonView(View.Search.class)
     private String nombre;
 
     public Long getIdRol() {
