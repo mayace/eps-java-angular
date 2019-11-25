@@ -1,0 +1,135 @@
+<div class="has-text-right">
+    <button class="button is-primary">
+        <span class="icon">
+            <i class="fas fa-search"></i>
+        </span>
+        <span>Buscar carnet en centro de cálculo</span>
+    </button>
+</div>
+
+<div class="field">
+    <label for="" class="label">Carnet</label>
+    <div class="control">
+        <input [disabled]="hay_contenido" [readonly]="read_only" [(ngModel)]="selected.carnet" type="number" min="0"
+            class="input">
+    </div>
+</div>
+
+
+
+<div class="field">
+    <label for="" class="label">
+        {{selected.estudianteCarreraList.length}} Carrera(s)
+    </label>
+    <div class="control">
+        <table class="table is-fullwidth is-striped">
+            <tbody>
+                <tr *ngFor="let item of selected.estudianteCarreraList; let index = index;">
+                    <td>
+                        {{index + 1}}.
+                        {{item.fkCarrera.nombre}}
+                    </td>
+                    <td *ngIf="!read_only" style="width: 15%;">
+                        <button (click)="selected.estudianteCarreraList.splice(index,1)"
+                            class="is-danger button is-fullwidth">
+                            <span class="icon">
+                                <i class="fas fa-times"></i>
+                            </span>
+                        </button>
+                    </td>
+                </tr>
+                <tr *ngIf="!read_only">
+                    <td>
+                        <div class="control">
+                            <div class="select is-fullwidth">
+                                <select [(ngModel)]="carrera_selected">
+                                    <option *ngFor="let item of carrera_list" [ngValue]="item">
+                                        {{item.nombre}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" [disabled]="!carrera_selected" (click)="add_carrera(carrera_selected)"
+                            class="button is-primary is-fullwidth">
+                            <span class="icon">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<div class="field">
+    <label for="" class="label">CUI</label>
+    <div class="control">
+        <input [readonly]="read_only" [(ngModel)]="selected.cui" type="number" min="0" class="input">
+    </div>
+</div>
+<div class="field">
+    <label for="" class="label">Teléfono</label>
+    <div class="control">
+        <input [readonly]="read_only" [(ngModel)]="selected.telefono" type="number" min="0" class="input">
+    </div>
+</div>
+<div class="field">
+    <label for="" class="label">Nombre</label>
+    <div class="control">
+        <input [readonly]="read_only" [(ngModel)]="selected.nombre" type="text" class="input">
+    </div>
+</div>
+<div class="field">
+    <label for="" class="label">Email</label>
+    <div class="control">
+        <input [readonly]="read_only" [(ngModel)]="selected.correo" type="text" class="input">
+    </div>
+</div>
+
+<div *ngIf="hay_contenido" class="columns">
+    <div class="column is-4">
+        <button (click)="dodel()" *ngIf="read_only" class="button is-danger is-fullwidth">
+            <span class="icon">
+                <i class="fas fa-trash"></i>
+            </span>
+            <span>Eliminar</span>
+        </button>
+    </div>
+    <div class="column is-4">
+        <button (click)="docancel()" *ngIf="!read_only" class="button is-fullwidth">
+            <span class="icon">
+                <i class="fas fa-ban"></i>
+            </span>
+            <span>Cancelar</span>
+        </button>
+    </div>
+    <div class="column is-4">
+        <button (click)="read_only = false" *ngIf="read_only" class="button is-info is-fullwidth">
+            <span class="icon">
+                <i class="fas fa-edit"></i>
+            </span>
+            <span>Editar</span>
+        </button>
+
+        <button (click)="doupt()" *ngIf="!read_only" [disabled]="!upt_ready" class="button is-success is-fullwidth">
+            <span class="icon">
+                <i class="fas fa-save"></i>
+            </span>
+            <span>Guardar</span>
+        </button>
+    </div>
+</div>
+
+<div class="has-text-right">
+    <button (click)="docreate()" [disabled]="!upt_ready" *ngIf="! hay_contenido" class="button is-primary">
+        <span class="icon">
+            <i class="fas fa-plus"></i>
+        </span>
+        <span>Crear</span>
+    </button>
+</div>

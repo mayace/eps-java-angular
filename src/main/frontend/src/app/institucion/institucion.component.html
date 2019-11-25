@@ -1,0 +1,40 @@
+
+<div class="columns" style="align-items: flex-end;">
+    <div class="column">
+        <div class="field ">
+            <label class="label">Buscar</label>
+            <div class="control is-expanded">
+                <input autofocus [(ngModel)]="selected.nombre" type="text" class="input">
+            </div>
+        </div>
+    </div>
+
+    <div class="column is-3">
+        <div class="control">
+            <a [routerLink]="['/institucion/0']" type="button" class="button is-primary is-fullwidth">
+                <span class="icon">
+                    <i class="fas fa-plus"></i>
+                </span>
+                <span>Crear</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="notification is-danger" *ngFor="let item of list_error">{{item}}</div>
+
+<table class="table is-fullwidth is-striped">
+    <caption>{{list.length}} institucione(s)</caption>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of list; let index = index;">
+            <td>
+                <a routerLink="{{item.idInstitucion}}" class="button is-text">{{item.nombre}}</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
