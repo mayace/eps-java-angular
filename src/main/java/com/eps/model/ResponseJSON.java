@@ -5,15 +5,24 @@
  */
 package com.eps.model;
 
+import com.eps.rest.View;
+import com.fasterxml.jackson.annotation.JsonView;
+
 /**
  *
  * @author nikola
  */
 public class ResponseJSON {
+    
+    @JsonView(View.Search.class)
     private Object data;
+    @JsonView(View.Search.class)
     private Integer total;
+    @JsonView(View.Search.class)
     private String error;
+    @JsonView(View.Search.class)
     private Integer limit;
+    @JsonView(View.Search.class)
     private Integer skip;
 
     public ResponseJSON(){

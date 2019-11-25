@@ -1,13 +1,18 @@
 import { Component } from '@angular/core';
+<<<<<<< HEAD
 import { MensajeService } from "./mensaje.service";
 import { BodyResponse } from './modelos';
 import { AuthService } from './auth.service';
+=======
+>>>>>>> fix/proyect
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+<<<<<<< HEAD
   title = 'practicas-intermedias-eps-js';
 
   constructor(
@@ -21,8 +26,7 @@ export class AppComponent {
   }
 
 
-}
-
-export interface SimpleListAppInterface<T> {
-  body: BodyResponse<T[]>;
+=======
+  title = 'frontend';
+>>>>>>> fix/proyect
 }

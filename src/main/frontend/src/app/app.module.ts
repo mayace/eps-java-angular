@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+<<<<<<< HEAD
 import { InstitucionComponent } from './institucion/institucion.component';
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -44,20 +44,18 @@ import { VerticalMenuComponent } from './menu/vertical';
     , CartaDetalleComponent
     , LoginComponent
     , VerticalMenuComponent
+=======
+
+@NgModule({
+  declarations: [
+    AppComponent
+>>>>>>> fix/proyect
   ],
   imports: [
-    BrowserModule
-    , AppRoutingModule
-    , FormsModule
-    , HttpClientModule
-    , NgbDatepickerModule
+    BrowserModule,
+    AppRoutingModule
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true
-    }
-    , AuthRouteGuard
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
