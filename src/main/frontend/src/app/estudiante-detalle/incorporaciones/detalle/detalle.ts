@@ -182,13 +182,13 @@ export default class EstudianteIncorporacionDetalleComponent implements OnInit, 
 
         const urls = {
             privado: {
-                url: "/assets/cartas/Privado.docx"
+                url: "assets/cartas/Privado.docx"
             }
             , practica: {
-                url: "/assets/cartas/Practicas.docx"
+                url: "assets/cartas/Practicas.docx"
             }
             , protocolo: {
-                url: "/assets/cartas/Protocolo.docx"
+                url: "assets/cartas/Protocolo.docx"
             }
         }
 
