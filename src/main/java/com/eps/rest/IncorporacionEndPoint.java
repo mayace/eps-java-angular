@@ -38,7 +38,6 @@ public class IncorporacionEndPoint {
     IncorporacionBean incorporacionBean;
     
     @GET
-    @JsonView(View.Search.class)
     public ResponseJSON listAll(
             @QueryParam("skip") @DefaultValue("0") Integer skip,
             @QueryParam("limit") @DefaultValue("0") Integer limit,

@@ -38,7 +38,6 @@ public class CartaEndPoint {
     CartaBean cartaBean;
     
     @GET
-    @JsonView(View.Search.class)
     public ResponseJSON listAll(
             @QueryParam("nombre") @DefaultValue("%") String nombre,
             @QueryParam("skip") @DefaultValue("0") Integer skip,
