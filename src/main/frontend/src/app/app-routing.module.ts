@@ -14,6 +14,7 @@ import { CartaComponent } from './carta/carta';
 import { CartaDetalleComponent } from './carta-detalle/carta-detalle';
 import { AuthRouteGuard } from './auth-route.guard';
 import { LoginComponent } from './usuario/login.component';
+import { AcercaDeComponent } from './acerca/acerca';
 
 const routes: Routes = [
   {
@@ -29,6 +30,10 @@ const routes: Routes = [
   , {
     path: "login"
     , component: LoginComponent
+  }
+  , {
+    path: "acercade"
+    , component: AcercaDeComponent
   }
   , {
     path: "cartas"
