@@ -1,23 +1,30 @@
-
 <div class="columns" style="align-items: flex-end;">
-    <div *ngIf="false"  class="column">
+    <div class="column">
         <div class="field">
             <label class="label">Buscar carnet:</label>
             <div class="control">
-                <input [(ngModel)]="selected.carnet" type="text" class="input" autofocus>
+                <input [(ngModel)]="selected.carnet" type="number" class="input" autofocus>
             </div>
         </div>
     </div>
     <div class="column is-3">
-        <a [routerLink]="['/estudiante', 0]" class="button is-primary is-fullwidth">
+        <button class="button is-primary is-fullwidth">
             <span class="icon">
-                <i class="fas fa-plus"></i>
+                <i class="fas fa-search"></i>
             </span>
-            <span>
-                Nuevo
-            </span>
-        </a>
+            <span>Buscar</span>
+        </button>
     </div>
+</div>
+<div class="has-text-right">
+    <a [routerLink]="['/estudiante', 0]" class="button is-link">
+        <span class="icon">
+            <i class="fas fa-plus-circle"></i>
+        </span>
+        <span>
+            Nuevo
+        </span>
+    </a>
 </div>
 
 <table class="table is-fullwidth is-striped">
