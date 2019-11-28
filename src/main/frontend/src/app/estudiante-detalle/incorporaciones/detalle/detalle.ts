@@ -40,11 +40,14 @@ export default class EstudianteIncorporacionDetalleComponent implements OnInit, 
 
         self.actived_route.pathFromRoot[1].params.subscribe(params => {
             self.estudiante_doget(params.carnet);
+            self.carnet = params.carnet;
         });
         self.actived_route.pathFromRoot[2].params.subscribe(params => {
             self.doget(params.id);
         });
     }
+
+    carnet = 0
 
     get list_institucion() {
         const self = this;
@@ -186,6 +189,7 @@ export default class EstudianteIncorporacionDetalleComponent implements OnInit, 
             const body = await self.incorporaciones.del(self.selected.idIncorporacion);
             if (body.total > 0) {
                 self.mensajes.create_info("Incorporación eliminada.");
+                self.router.navigate(["/estudiante",self.carnet,"incorporaciones"]);
             }
         }
     }
