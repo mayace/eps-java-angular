@@ -39,7 +39,7 @@ public class CartaEndPoint {
     
     @GET
     public ResponseJSON listAll(
-            @QueryParam("nombre") @DefaultValue("%") String nombre,
+            @QueryParam("destinatario") @DefaultValue("%") String nombre,
             @QueryParam("skip") @DefaultValue("0") Integer skip,
             @QueryParam("limit") @DefaultValue("0") Integer limit){
         ResponseJSON response = cartaBean.findAll(skip,limit,nombre);

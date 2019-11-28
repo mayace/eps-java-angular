@@ -62,10 +62,10 @@ public class EstudianteBean {
         
         Predicate general = builder.like(builder.lower(root.<String>get("nombre")),"%" + nombre.toLowerCase() + "%");
         if(carnet > 0){
-            general = builder.and(builder.equal(root.get("carnet"), carnet),general);
+            general = builder.and(builder.greaterThanOrEqualTo(root.<Long>get("carnet"), carnet),general);
         }
         if(cui > 0){
-            general = builder.and(builder.equal(root.get("cui"), cui));
+            general = builder.and(builder.greaterThanOrEqualTo(root.<Long>get("cui"), cui));
         }
         
         query.where(
