@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EstudianteService } from "./../estudiante.service";
 import { BodyResponse, Estudiante } from '../modelos';
+import { isNumber } from 'util';
 
 @Component({
   selector: 'app-estudiante',
@@ -25,5 +26,11 @@ export class EstudianteComponent implements OnInit {
   async dosel() {
     const self = this;
     self.body = await self.estudiantes.sel();
+  }
+  async dosearch(carnet) {
+    const self = this;
+    if (!isNaN(carnet)) {
+      self.body = await self.estudiantes.sel({ carnet });
+    }
   }
 }

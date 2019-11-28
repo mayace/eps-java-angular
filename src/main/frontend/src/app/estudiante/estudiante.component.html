@@ -3,12 +3,12 @@
         <div class="field">
             <label class="label">Buscar carnet:</label>
             <div class="control">
-                <input [(ngModel)]="selected.carnet" type="number" class="input" autofocus>
+                <input (keyup.enter)="dosearch(txtCarnet.value)" #txtCarnet class="input" autofocus>
             </div>
         </div>
     </div>
     <div class="column is-3">
-        <button class="button is-primary is-fullwidth">
+        <button type="button" (click)="dosearch(txtCarnet.value)" class="button is-primary is-fullwidth">
             <span class="icon">
                 <i class="fas fa-search"></i>
             </span>
@@ -16,20 +16,23 @@
         </button>
     </div>
 </div>
-<div class="has-text-right">
-    <a [routerLink]="['/estudiante', 0]" class="button is-link">
-        <span class="icon">
-            <i class="fas fa-plus-circle"></i>
-        </span>
-        <span>
-            Nuevo
-        </span>
-    </a>
+
+<div class="columns">
+    <div class="column is-offset-9">
+        <a [routerLink]="['/estudiante', 0]" class="button is-fullwidth is-link">
+            <span class="icon">
+                <i class="fas fa-plus-circle"></i>
+            </span>
+            <span>
+                Nuevo
+            </span>
+        </a>
+    </div>
 </div>
 
 <table class="table is-fullwidth is-striped">
     <caption>
-        {{list.length}} estudiante(s)
+        {{list.length}} estudiante(s) de {{body && body.total}} en total
     </caption>
     <thead>
         <tr>
