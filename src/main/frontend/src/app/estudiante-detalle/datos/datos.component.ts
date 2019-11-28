@@ -27,13 +27,14 @@ export default class EstudianteDetalleDatosComponent implements OnInit {
             const carnet = params.carnet;
             if (carnet > 0) {
                 self.doget(carnet);
-            } else{
+            } else {
                 self.body.data = new Estudiante();
                 self.read_only = false;
             }
         });
         self.body_carrera = await self.carreras.sel();
     }
+
     async doget(carnet: Number) {
         const self = this;
         self.body = await self.estudiantes.get(carnet);
@@ -75,14 +76,15 @@ export default class EstudianteDetalleDatosComponent implements OnInit {
         const has_carnet = self.selected.carnet > 0;
         const has_cui = self.selected.cui > 0;
         const has_nombre = self.selected.nombre.trim().length > 0;
+        const has_carrera = self.selected.estudianteCarreraList.length > 0;
 
         let has_email = true;
-        const email = self.selected.correo.trim();
+        const email = self.selected.correo && self.selected.correo.trim() || "";
         if (email.length > 0) {
             has_email = self.email_regex.test(email);
         }
         // const has_carnet = self.selected.carnet > 0;
-        return has_carnet && has_cui && has_nombre && has_email;
+        return has_carnet && has_cui && has_nombre && has_email && has_carrera;
     }
 
     get hay_contenido() {
@@ -104,7 +106,7 @@ export default class EstudianteDetalleDatosComponent implements OnInit {
 
     }
     docancel() {
-        window.location.reload();
+        this.ngOnInit();
     }
     async doupt() {
         const self = this;
