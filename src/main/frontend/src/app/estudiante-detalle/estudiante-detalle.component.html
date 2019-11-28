@@ -10,7 +10,7 @@
 <div class="tabs is-boxed">
     <ul>
         <li [routerLink]="['datos']" routerLinkActive="is-active"><a>Datos</a></li>
-        <li [routerLink]="['incorporaciones']" routerLinkActive="is-active"><a>Incorporaciones</a></li>
+        <li *ngIf="carnet > 0" [routerLink]="['incorporaciones']" routerLinkActive="is-active"><a>Incorporaciones</a></li>
     </ul>
 </div>
 

@@ -40,11 +40,14 @@ export default class EstudianteIncorporacionDetalleComponent implements OnInit, 
 
         self.actived_route.pathFromRoot[1].params.subscribe(params => {
             self.estudiante_doget(params.carnet);
+            self.carnet = params.carnet;
         });
         self.actived_route.pathFromRoot[2].params.subscribe(params => {
             self.doget(params.id);
         });
     }
+
+    carnet = 0
 
     get list_institucion() {
         const self = this;
@@ -83,7 +86,7 @@ export default class EstudianteIncorporacionDetalleComponent implements OnInit, 
         const dy = tf.getFullYear() - ti.getFullYear();
         const diff = 12 * dy + dm;
 
-        return diff;
+        return Math.max(0, diff);
     }
 
     get duracion_eps_seguro() {
@@ -95,20 +98,56 @@ export default class EstudianteIncorporacionDetalleComponent implements OnInit, 
         const dy = tf.getFullYear() - ti.getFullYear();
         const diff = 12 * dy + dm;
 
-        return diff;
+        return Math.max(0, diff);
     }
 
+    get has_correlativo() {
+        const self = this;
+        return self.selected.correlativoDoc > 0;
+    }
+
+    get has_semestre() {
+        const self = this;
+        return self.selected.semestre > 0;
+    }
+
+    get has_cartas() {
+        const self = this;
+        return self.selected.fkCarta && self.selected.fkCarta.idCarta > 0 || false;
+    }
+
+    get has_institucion() {
+        const self = this;
+        return self.selected.fkInstitucion && self.selected.fkInstitucion.idInstitucion > 0 || false;
+    }
+    get has_asesor() {
+        const self = this;
+        return self.selected.asesor.trim().length > 0;
+    }
+    get has_supervisor() {
+        const self = this;
+        return self.selected.supervisor.trim().length > 0;
+    }
+    get has_asesor_supervisor() {
+        const self = this;
+        return self.selected.asesorSupervisor.trim().length > 0;
+    }
+
+    get has_duracion_eps(){
+        const self =this;
+        return self.duracion_eps > 0;
+    }
     get upt_ready() {
         const self = this;
-        const has_correlativo = self.selected.correlativoDoc > 0;
-        const has_fechas = self.duracion_eps > 0;
-        const has_asesor = self.selected.asesor.trim().length > 0;
-        const has_asesorSupervisor = self.selected.asesorSupervisor.trim().length > 0;
-        const has_supervisor = self.selected.supervisor.trim().length > 0;
-        const hay_insitucion = !(self.selected.fkInstitucion === undefined || self.selected.fkInstitucion === null)
-        const hay_cartas = !(self.selected.fkCarta === undefined || self.selected.fkCarta === null)
 
-        return hay_cartas && hay_insitucion && has_asesor && has_asesorSupervisor && has_supervisor && has_correlativo && has_fechas;
+        return self.has_cartas
+            && self.has_institucion
+            && self.has_asesor
+            && self.has_asesor_supervisor
+            && self.has_supervisor
+            && self.has_semestre
+            && self.has_correlativo
+            && self.has_duracion_eps;
     }
 
     get hay_contenido() {
@@ -150,6 +189,7 @@ export default class EstudianteIncorporacionDetalleComponent implements OnInit, 
             const body = await self.incorporaciones.del(self.selected.idIncorporacion);
             if (body.total > 0) {
                 self.mensajes.create_info("Incorporación eliminada.");
+                self.router.navigate(["/estudiante",self.carnet,"incorporaciones"]);
             }
         }
     }

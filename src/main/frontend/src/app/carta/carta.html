@@ -3,11 +3,22 @@
         <div class="field">
             <label class="label">Buscar:</label>
             <div class="control">
-                <input [(ngModel)]="selected.destinatario" type="text" class="input" autofocus>
+                <input (keyup.enter)="dosearch(txtGrupo.value)" #txtGrupo type="text" class="input" autofocus>
             </div>
         </div>
     </div>
     <div class="column is-3">
+        <button type="button" (click)="dosearch(txtGrupo.value)" class="button is-link is-fullwidth">
+            <span class="icon">
+                <i class="fas fa-search"></i>
+            </span>
+            <span>Buscar</span>
+        </button>
+    </div>
+</div>
+
+<div *ngIf="!es_selector" class="columns">
+    <div class="column is-offset-9">
         <a [routerLink]="['/cartas', 0]" class="button is-primary is-fullwidth">
             <span class="icon">
                 <i class="fas fa-plus"></i>
@@ -21,7 +32,10 @@
 
 <table class="table is-fullwidth is-striped">
     <caption>
-        {{list.length}} grupo(s)
+        <strong>
+            {{list.length}}
+        </strong>
+        grupo(s) encontrado(s).
     </caption>
     <thead>
         <tr>
@@ -39,7 +53,7 @@
                     </label>
                 </div>
                 <ng-template #btnLink>
-                    <a [routerLink]="['/cartas', item.idCarta]" class="button is-large is-text">
+                    <a [routerLink]="['/cartas', item.idCarta]" class="button is-text">
                         {{item.destinatario}}
                     </a>
                 </ng-template>
@@ -47,4 +61,3 @@
         </tr>
     </tbody>
 </table>
-

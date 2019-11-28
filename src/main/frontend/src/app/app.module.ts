@@ -25,6 +25,7 @@ import { AuthRouteGuard } from './auth-route.guard';
 import { LoginComponent } from './usuario/login.component';
 import { VerticalMenuComponent } from './menu/vertical';
 import { AcercaDeComponent } from './acerca/acerca';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,9 @@ import { AcercaDeComponent } from './acerca/acerca';
       provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true
     }
     , AuthRouteGuard
+    , {
+      provide: LocationStrategy, useClass: HashLocationStrategy
+    }
   ],
   bootstrap: [AppComponent]
 })
