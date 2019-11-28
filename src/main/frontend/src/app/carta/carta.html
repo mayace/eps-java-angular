@@ -17,7 +17,7 @@
     </div>
 </div>
 
-<div class="columns">
+<div *ngIf="!es_selector" class="columns">
     <div class="column is-offset-9">
         <a [routerLink]="['/cartas', 0]" class="button is-primary is-fullwidth">
             <span class="icon">
