@@ -49,4 +49,9 @@ export class CartaComponent implements OnInit {
             self.on_selected.emit(to);
         }
     }
+
+    async dosearch(destinatario: string) {
+        const self = this;
+        self.body = await self.cartas.sel({ destinatario });
+    }
 }
