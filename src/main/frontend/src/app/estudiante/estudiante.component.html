@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="column is-3">
-        <button type="button" (click)="dosearch(txtCarnet.value)" class="button is-primary is-fullwidth">
+        <button type="button" (click)="dosearch(txtCarnet.value)" class="button is-link is-fullwidth">
             <span class="icon">
                 <i class="fas fa-search"></i>
             </span>
@@ -19,9 +19,9 @@
 
 <div class="columns">
     <div class="column is-offset-9">
-        <a [routerLink]="['/estudiante', 0]" class="button is-fullwidth is-link">
+        <a [routerLink]="['/estudiante', 0]" class="button is-fullwidth is-primary">
             <span class="icon">
-                <i class="fas fa-plus-circle"></i>
+                <i class="fas fa-plus"></i>
             </span>
             <span>
                 Nuevo
