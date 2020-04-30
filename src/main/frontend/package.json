@@ -24,7 +24,7 @@
     "@ng-bootstrap/ng-bootstrap": "^5.1.2",
     "docxtemplater": "^3.14.8",
     "file-saver": "^2.0.2",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jquery-ui": "^1.12.1",
     "jquery-ui-dist": "^1.12.1",
     "pizzip": "^3.0.6",
